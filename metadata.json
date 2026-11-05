@@ -7,9 +7,7 @@
   "source": "https://github.com/npwalker/recursive_file_permissions",
   "project_page": "https://github.com/npwalker/recursive_file_permissions",
   "issues_url": "https://github.com/npwalker/recursive_file_permissions/issues",
-  "dependencies": [
-
-  ],
+  "dependencies": [],
   "operatingsystem_support": [
     {
       "operatingsystem": "CentOS",
@@ -87,8 +85,5 @@
       "name": "puppet",
       "version_requirement": ">= 4.6.0 < 9.0.0"
     }
-  ],
-  "pdk-version": "1.19.0.pre (heads/master-0-g9316055)",
-  "template-url": "https://github.com/puppetlabs/pdk-templates#master",
-  "template-ref": "remotes/origin/master-0-ga58fd92"
+  ]
 }

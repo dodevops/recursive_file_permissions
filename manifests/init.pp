@@ -11,14 +11,24 @@
 #     owner     => 'me',
 #     group     => 'us',
 #    }
-define recursive_file_permissions(
+#
+# @param target_dir
+#   Directory to manage recursively.
+# @param file_mode
+#   Mode for all files below `target_dir`.
+# @param dir_mode
+#   Mode for all directories below `target_dir`.
+# @param owner
+#   Owner for all files and directories below `target_dir`.
+# @param group
+#   Group for all files and directories below `target_dir`.
+define recursive_file_permissions (
   Recursive_file_permissions::Unixpath           $target_dir = $title,
   Optional[Recursive_file_permissions::Filemode] $file_mode  = undef,
   Optional[Recursive_file_permissions::Filemode] $dir_mode   = undef,
   Optional[String[1]]                            $owner      = undef,
   Optional[String[1]]                            $group      = undef,
 ) {
-
   if $facts['os']['family'] == 'windows' {
     fail("${module_name} does not support Windows")
   }
@@ -35,9 +45,9 @@ define recursive_file_permissions(
   #   - fix.   String.  Find -exec command to fix identified files.
   #
   $v = case $facts['os']['family'] {
-    'AIX', 'Solaris': { ''    } # Doesn't support -c or -v
-    'Darwin':         { '-v'  } # Doesn't support the -c flag, but has -v
-    default:          { '-c'  } # Beautifully verbose output
+    'AIX', 'Solaris': { '' } # Doesn't support -c or -v
+    'Darwin':         { '-v' } # Doesn't support the -c flag, but has -v
+    default:          { '-c' } # Beautifully verbose output
   }
 
   $validators = [
@@ -90,5 +100,4 @@ define recursive_file_permissions(
     onlyif    => $onlyif,
     command   => $command,
   }
-
 }

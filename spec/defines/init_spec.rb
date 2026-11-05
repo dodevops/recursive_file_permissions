@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'recursive_file_permissions' do
   let(:title) { '/tmp/blah' }
   let(:params) do
     {
-      'file_mode'  => '0644',
-      'dir_mode'   => '0744',
-      'owner'      => 'test',
-      'group'      => 'test',
+      'file_mode' => '0644',
+      'dir_mode' => '0744',
+      'owner' => 'test',
+      'group' => 'test',
     }
   end
 
